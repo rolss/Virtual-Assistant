@@ -101,7 +101,25 @@ if __name__ == '__main__':
                 date_to_save = ','.join(birth_date)
                 with open('birthdays.txt', 'a') as file:
                     file.write(date_to_save)
+                    speak("Birthday successfully added")
 
+            if input_text[0] == 'birthdays':
+                with open('birthdays.txt', 'r') as file:
+                    lines = file.readlines()
+                    today = datetime.date.today()
+                    today_split = today.strftime(f"%B {today.day}").split()
+                    filtered_birthdays = [element for element in lines if (today_split[0].lower() in element and today_split[1] in element)]
+                    
+                    if filtered_birthdays:
+                        for birthday in filtered_birthdays:
+                            birthday = birthday.strip().split(',')
+                            speak(f"{birthday[2]}'s birthday is today")
+                            print(birthday[2].strip())
+                    else:
+                        speak("No birthdays today!")
+                    
+                    
+                        
                 
 
 

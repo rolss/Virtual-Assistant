@@ -1,0 +1,5 @@
+pyttsx3
+import speech_recognition
+re
+wikipedia
+datetime
